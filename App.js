@@ -1,28 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('Stevenson');
-  const [age, setAge] = useState('21')
+  const [people, setPeople] = useState([
+    {name: 'Stevenson', key: '1'},
+    {name: 'Linda', key: '2'},
+    {name: 'Tony', key: '3'},
+    {name: 'Olivia', key: '4'},
+    {name: 'Eason', key: '5'},
+    {name: 'Nina', key: '6'},
+    {name: 'Peter', key: '7'},
+  ])
 
   return (
     <View style={styles.container}>
-      <Text>Enter Name:</Text>
-      <TextInput
-        multiline
-        style={styles.input}
-        placeholder='e.g Linda Han'
-        onChangeText={(value) => setName(value)}
-      />
-      <Text>Enter Age:</Text>
-      <TextInput
-        keyboardType='numeric'
-        style={styles.input}
-        placeholder='e.g 99'
-        onChangeText={(value) => setAge(value)}
-      />
-      <Text>Name: {name}, Age: {age}</Text>
+
+      <ScrollView>
+        {people.map(entry => (
+            <View key={entry.key}>
+              <Text style={styles.entry}>{entry.name}</Text>
+            </View>
+          ))}
+      </ScrollView>
       <StatusBar style="auto" />
     </View>
   );
@@ -32,14 +32,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#777',
-    padding: 8,
-    margin: 10,
-    width: 200,
+  entry: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: 'pink',
+    fontSize: 24,
   }
 });
