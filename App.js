@@ -11,11 +11,12 @@ export default function App() {
     {name: 'Eason', key: '5'},
     {name: 'Nina', key: '6'},
     {name: 'Peter', key: '7'},
+    {name: 'Retardo', key: '8'},
+    {name: 'Goopta', key: '9'}
   ])
 
   return (
     <View style={styles.container}>
-
       <ScrollView>
         {people.map(entry => (
             <View key={entry.key}>
