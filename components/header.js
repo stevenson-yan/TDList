@@ -1,26 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+import { globalStyles } from '../styles/Globals.js'
 
 export default function Header() {
   return (
-    <View style={styles.header}>
-      <Text style={styles.title}>My Todos</Text>
+    <View style={globalStyles.header}>
+      <StatusBar style="auto" />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  header: {
-    height: 110,
-    paddingTop: 45,
-    // paddingBottom: 20,
-    backgroundColor: 'coral'
-  },
-  title: {
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 15,
-  }
-})
