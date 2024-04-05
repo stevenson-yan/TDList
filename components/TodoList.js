@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { globalStyles } from '../styles/Globals';
 
 import Tabs from './Tabs';
 import NoteIcon from '../icons/NoteIcon';
 import CircleIcon from '../icons/CircleIcon';
-import { globalStyles } from '../styles/Globals';
-
-// import NoteIcon from '../icons/NoteIcon';
+import PlusIcon from '../icons/PlusIcon';
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState([
@@ -31,63 +30,50 @@ export default function TodoList() {
       data={todoList}
       ListHeaderComponent={<Tabs/>}
       ListFooterComponent={
-        <TouchableOpacity activeOpacity={1} onPress={() => newTodoPressHandler()}>
-          <TodoItem text={'New'} boxStyle={newTodoStyles.todoItem} textStyle={newTodoStyles.todoText} iconColour={"#d9d9d9"}/>
-        </TouchableOpacity>
+          <NewTodoItem text={'New Todo...'} textStyle={styles.newTodoText} pressHandler={() => newTodoPressHandler()}/>
     }
       renderItem={({item}) => {
         return (
-          <TodoItem text={item.name} showCircle={true} pressHandler={() => circlePressHandler(item.key)}/>
+          <TodoItem text={item.name} pressHandler={() => circlePressHandler(item.key)}/>
         )
       }}
     />
   )
 };
 
-function TodoItem({ text, pressHandler, showCircle, boxStyle, textStyle, iconColour }) {
+function TodoItem({ text, pressHandler, containerStyle, textStyle }) {
   return (
-    <View style={[globalStyles.todoItem, boxStyle]}>
+    <View style={[globalStyles.todoItem, containerStyle]}>
       <View style={globalStyles.todoItemLeft}>
-        <NoteIcon color={iconColour}/>
+        <NoteIcon color={globalStyles.todoItem.borderColor || containerStyle.borderColor}/>
         <Text style={[globalStyles.todoText, textStyle]}>{text}</Text>
       </View>
-      {showCircle && (
       <TouchableOpacity activeOpacity={1} onPress={pressHandler}>
         <CircleIcon />
-      </TouchableOpacity>)}
+      </TouchableOpacity>
     </View>
+  )
+}
+
+function NewTodoItem({ text, pressHandler, containerStyle, textStyle }) {
+  return (
+    <TouchableOpacity activeOpacity={1} onPress={pressHandler}>
+      <View style={[globalStyles.newTodoItem, containerStyle]}>
+        <View style={globalStyles.todoItemLeft}>
+          <PlusIcon color={globalStyles.newTodoItem.borderColor || containerStyle.borderColor} />
+          <Text style={[globalStyles.newTodoText, textStyle]}>{text}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   todoList: {
-    marginHorizontal: 25,
-    marginBottom: 25,
+    paddingHorizontal: 25,
+    paddingBottom: 25,
   },
-})
-
-const newTodoStyles = StyleSheet.create({
-  todoItem: {
-    height: 60,
-    marginBottom: 16,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#d9d9d9',
-    backgroundColor: '#fff',
-
-    flexDirection: 'row',
-    alignItems: "center",
-    justifyContent: 'space-between',
-    padding: 5,
-  },
-  todoItemLeft: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  todoText: {
-    color: '#d9d9d9'
-  },
-  icon: {
-    fill: '#d9d9d9'
+  newTodoText: {
+    color: '#989898'
   }
 })

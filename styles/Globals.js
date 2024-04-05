@@ -28,4 +28,16 @@ export const globalStyles = StyleSheet.create({
   todoText: {
     margin: 5,
   },
+  newTodoItem: {
+    height: 60,
+    marginBottom: 16,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#d9d9d9',
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: 'space-between',
+    padding: 5,
+  },
 })
