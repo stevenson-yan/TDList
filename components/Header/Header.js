@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-import { globalStyles } from '../styles/Globals.js'
+import styles from './Header.style'
 
 export default function Header() {
   return (
-    <View style={globalStyles.header}>
+    <View style={styles.header}>
       <StatusBar style="auto" />
     </View>
   )
