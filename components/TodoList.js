@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/Globals';
 
 import Tabs from './Tabs';
@@ -48,7 +48,7 @@ function TodoItem({ text, pressHandler, containerStyle, textStyle }) {
         <NoteIcon color={globalStyles.todoItem.borderColor || containerStyle.borderColor}/>
         <Text style={[globalStyles.todoText, textStyle]}>{text}</Text>
       </View>
-      <TouchableOpacity activeOpacity={1} onPress={pressHandler}>
+      <TouchableOpacity onPress={pressHandler}>
         <CircleIcon />
       </TouchableOpacity>
     </View>
@@ -57,7 +57,7 @@ function TodoItem({ text, pressHandler, containerStyle, textStyle }) {
 
 function NewTodoItem({ text, pressHandler, containerStyle, textStyle }) {
   return (
-    <TouchableOpacity activeOpacity={1} onPress={pressHandler}>
+    <TouchableOpacity onPress={pressHandler}>
       <View style={[globalStyles.newTodoItem, containerStyle]}>
         <View style={globalStyles.todoItemLeft}>
           <PlusIcon color={globalStyles.newTodoItem.borderColor || containerStyle.borderColor} />
