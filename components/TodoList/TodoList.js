@@ -29,7 +29,7 @@ export default function TodoList() {
       data={todoList}
       ListHeaderComponent={<Tabs/>}
       ListFooterComponent={
-          <NewTodoItem text={'New Todo...'} textStyle={styles.newTodoText} pressHandler={() => newTodoPressHandler()}/>
+          <NewTodoItem text={'New Todo...'} pressHandler={() => newTodoPressHandler()}/>
     }
       renderItem={({item}) => {
         return (
