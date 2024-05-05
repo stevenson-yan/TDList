@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { globalStyles } from '../../../styles/Globals';
 
 import NoteIcon from '../../../icons/NoteIcon'
 import CircleIcon from '../../../icons/CircleIcon'
+import styles from './TodoItem.style'
 
-export default function TodoItem({ text, pressHandler, containerStyle, textStyle }) {
+export default function TodoItem({ text, pressHandler }) {
     return (
-      <View style={[globalStyles.todoItem, containerStyle]}>
-        <View style={globalStyles.todoItemLeft}>
-          <NoteIcon color={globalStyles.todoItem.borderColor || containerStyle.borderColor}/>
-          <Text style={[globalStyles.todoText, textStyle]}>{text}</Text>
+      <View style={styles.todoItem}>
+        <View style={styles.todoItemLeft}>
+          <NoteIcon color={styles.todoItem.borderColor}/>
+          <Text style={styles.todoText}>{text}</Text>
         </View>
         <TouchableOpacity onPress={pressHandler}>
           <CircleIcon />
