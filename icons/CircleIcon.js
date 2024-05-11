@@ -1,7 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
 import { SvgXml } from 'react-native-svg';
-import { globalStyles } from '../styles/Globals';
 
 export default function CircleIcon({ style }) {
   const svgContent = `
@@ -11,6 +9,6 @@ export default function CircleIcon({ style }) {
     </svg>`;
 
   return (
-      <SvgXml style={[globalStyles.icon, style]} xml={svgContent}/>
+      <SvgXml style={style} xml={svgContent}/>
   )
 }

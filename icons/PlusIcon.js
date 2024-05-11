@@ -1,6 +1,5 @@
 import React from 'react'
 import { SvgXml } from 'react-native-svg';
-import { globalStyles } from '../styles/Globals';
 
 export default function PlusIcon({ style, color }) {
   const svgContent = `
@@ -11,6 +10,6 @@ export default function PlusIcon({ style, color }) {
   `;
 
   return (
-      <SvgXml style={[globalStyles.icon, style]} xml={svgContent}/>
+      <SvgXml style={style} xml={svgContent}/>
   )
 }

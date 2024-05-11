@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import PlusIcon from '../../../icons/PlusIcon';
+import PlusIcon from '../../icons/PlusIcon';
 import styles from './NewTodoItem.style'
 
 export default function NewTodoItem({ text, pressHandler }) {
@@ -9,7 +9,7 @@ export default function NewTodoItem({ text, pressHandler }) {
       <TouchableOpacity onPress={pressHandler}>
         <View style={styles.newTodoItem}>
           <View style={styles.newTodoItemIcon}>
-            <PlusIcon color={styles.newTodoItem.borderColor} />
+            <PlusIcon color={styles.newTodoItem.borderColor} style={styles.icon}/>
             <Text style={styles.newTodoText}>{text}</Text>
           </View>
         </View>
